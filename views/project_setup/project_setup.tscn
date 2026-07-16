@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://cimb8qsiyp5r8"]
+
+[ext_resource type="Script" uid="uid://fmnphghe04eq" path="res://addons/shipgodot_ios/views/project_setup/project_setup.gd" id="1_1wjy2"]
+[ext_resource type="Texture2D" uid="uid://cwsb7xcp3laaj" path="res://addons/shipgodot_ios/shipgodot.svg" id="1_b37nu"]
+[ext_resource type="StyleBox" uid="uid://byn0a0unhb06d" path="res://addons/shipgodot_ios/styles/panel_background.tres" id="1_esruo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbn8p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqob6"]
+
+[node name="ProjectSetup" type="Control" unique_id=278528658]
+custom_minimum_size = Vector2(640, 640)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1wjy2")
+
+[node name="Panel" type="Panel" parent="." unique_id=239215116]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_esruo")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1669167233]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2051103983]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1814283361]
+custom_minimum_size = Vector2(128, 78.435)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_b37nu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Padding" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1946986237]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="LicenseKeyInputContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1096962997]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=1134614288]
+custom_minimum_size = Vector2(192, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xbn8p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yqob6")
+text = "Bundle ID:"
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Padding" type="Control" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=1315752426]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=768097407]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+placeholder_text = "com"
+alignment = 1
+emoji_menu_enabled = false
+
+[node name="Padding2" type="Label" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=973331715]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "."
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="LineEdit2" type="LineEdit" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=591919170]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+placeholder_text = "example-domain"
+alignment = 1
+emoji_menu_enabled = false
+
+[node name="Padding4" type="Label" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=1449846087]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "."
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="LineEdit3" type="LineEdit" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=1274603972]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+placeholder_text = "example-game-name"
+alignment = 1
+emoji_menu_enabled = false
+
+[node name="Padding4" type="Control" parent="MarginContainer/VBoxContainer" unique_id=309894452]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="LicensePromptInputContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1749276284]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/LicensePromptInputContainer" unique_id=440386655]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xbn8p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yqob6")
+text = "First time setting up your game? "
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="MarginContainer/VBoxContainer/LicensePromptInputContainer" unique_id=302556034]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Learn about Bundle IDs."
+
+[node name="Padding3" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1129550621]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=842657663]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(192, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "Continue"

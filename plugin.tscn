@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c8jjf4ajl7oiq"]
+
+[ext_resource type="Script" uid="uid://d3gabwxe7btvm" path="res://addons/shipgodot_ios/client/client.gd" id="1_kb71q"]
+[ext_resource type="Script" uid="uid://bky0ofgjjgl2f" path="res://addons/shipgodot_ios/plugin.gd" id="1_tn1s8"]
+
+[node name="Plugin" type="Control" unique_id=1494417102]
+clip_contents = true
+custom_minimum_size = Vector2(640, 640)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tn1s8")
+
+[node name="ShipGodotClient" type="Node" parent="." unique_id=177057155]
+unique_name_in_owner = true
+script = ExtResource("1_kb71q")
+metadata/_custom_type_script = "uid://d3gabwxe7btvm"

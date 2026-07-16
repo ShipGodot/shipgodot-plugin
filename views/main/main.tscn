@@ -1,0 +1,354 @@
+[gd_scene format=3 uid="uid://cri3008a73ngn"]
+
+[ext_resource type="Texture2D" uid="uid://cwsb7xcp3laaj" path="res://addons/shipgodot_ios/shipgodot.svg" id="1_4dlhn"]
+[ext_resource type="Script" uid="uid://cwr5yui31mjev" path="res://addons/shipgodot_ios/views/main/main.gd" id="1_gxt26"]
+[ext_resource type="StyleBox" uid="uid://byn0a0unhb06d" path="res://addons/shipgodot_ios/styles/panel_background.tres" id="2_51du6"]
+[ext_resource type="StyleBox" uid="uid://cjokvwkd15xb2" path="res://addons/shipgodot_ios/styles/panel_section.tres" id="2_j622v"]
+[ext_resource type="PackedScene" uid="uid://dbnems6773efa" path="res://addons/shipgodot_ios/views/main/components/build_info_container.tscn" id="5_ajklp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dlhn"]
+bg_color = Color(0.41568628, 1, 0.4862745, 1)
+
+[node name="SettingsChangeAlert" type="Control" unique_id=278528658]
+clip_contents = true
+custom_minimum_size = Vector2(640, 640)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gxt26")
+
+[node name="Panel" type="Panel" parent="." unique_id=239215116]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_51du6")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=791334230]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1669167233]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1645055832]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Info" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1780401865]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PluginInfoContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=294466026]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_j622v")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/PluginInfoContainer" unique_id=753823224]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="PluginInfo" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/PluginInfoContainer/MarginContainer" unique_id=2024264846]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Logo" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/Info/PluginInfoContainer/MarginContainer/PluginInfo" unique_id=1765563151]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_4dlhn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Padding" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info/PluginInfoContainer/MarginContainer/PluginInfo" unique_id=839138207]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="VersionText" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/PluginInfoContainer/MarginContainer/PluginInfo" unique_id=948415966]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "v.0.1.0 alpha"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Padding" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=574866822]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="MinutesInfoContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=662737384]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_j622v")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer" unique_id=1490675624]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="MinutesInfo" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer" unique_id=468993618]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo" unique_id=944645968]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo/HBoxContainer" unique_id=1599326312]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Available build minutes:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo/HBoxContainer" unique_id=1109765231]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "500"
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo" unique_id=621889259]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_4dlhn")
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo" unique_id=1456569628]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo/MarginContainer" unique_id=1793800159]
+layout_mode = 2
+text = "Get more minutes"
+
+[node name="Padding3" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=574012442]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="ProjectInfoContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=1646660687]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_j622v")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer" unique_id=1712117888]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="ProjectInfo" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer" unique_id=359427632]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ProjectInfoText" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1817983478]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Project Info"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Padding4" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1488908070]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="BundleID" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1251462019]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bundle ID:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Padding5" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=779166779]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1938442556]
+layout_mode = 2
+text = "com.shipgodot.demo"
+alignment = 1
+
+[node name="Padding6" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1474713558]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="ProjectVersion" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=582036659]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Project Version:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Padding7" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=56822736]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="LineEdit2" type="LineEdit" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1054038934]
+layout_mode = 2
+text = "1.0.0"
+alignment = 1
+
+[node name="Padding2" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=222103418]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="LicenseInfoContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=1251552896]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_j622v")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer" unique_id=43308394]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="LicenseInfo" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer/MarginContainer" unique_id=2105696166]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer/MarginContainer/LicenseInfo" unique_id=31527043]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer/MarginContainer/LicenseInfo/HBoxContainer" unique_id=186374757]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Your License is:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer/MarginContainer/LicenseInfo/HBoxContainer" unique_id=1047921063]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.41568628, 1, 0.4862745, 1)
+text = "Active"
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Padding4" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=1953900729]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="SettingsButtonContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=1780679740]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_j622v")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/SettingsButtonContainer" unique_id=419023281]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 32
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Info/SettingsButtonContainer/MarginContainer" unique_id=468241560]
+layout_mode = 2
+text = "Settings"
+
+[node name="Padding" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=2034810296]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="Line" type="Panel" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=2079166052]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Padding2" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1859962429]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="Builds" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1035157155]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Builds" unique_id=1231925808]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_j622v")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/PanelContainer" unique_id=546402003]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/PanelContainer/MarginContainer" unique_id=615663726]
+layout_mode = 2
+
+[node name="BuildsOverviewLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/PanelContainer/MarginContainer/HBoxContainer" unique_id=1406586343]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Builds overview"
+vertical_alignment = 2
+
+[node name="RunButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/PanelContainer/MarginContainer/HBoxContainer" unique_id=1840796366]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 96)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+text = "Run new build"
+
+[node name="Padding" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Builds" unique_id=1235269811]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Line" type="Panel" parent="PanelContainer/MarginContainer/HBoxContainer/Builds" unique_id=1767806434]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="Padding2" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Builds" unique_id=92876067]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="BuildsOverwievContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Builds" unique_id=870787009]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_j622v")
+
+[node name="BuildsContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/BuildsOverwievContainer" unique_id=931126727]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="BuildInfoContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/BuildsOverwievContainer/BuildsContainer" unique_id=823469388 instance=ExtResource("5_ajklp")]
+layout_mode = 2
+
+[node name="EmptyText" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/BuildsOverwievContainer/BuildsContainer" unique_id=483722843]
+unique_name_in_owner = true
+layout_mode = 2
+text = "This is where your builds will appear."
+horizontal_alignment = 1
+vertical_alignment = 1
