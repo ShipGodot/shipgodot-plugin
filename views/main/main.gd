@@ -15,13 +15,15 @@ func _ready() -> void:
 
 
 func _create_new_build() -> void:
-	var slot : BuildSlot = await api.request_build_slot("com.shipgodot.demo", "4.6.1")
+	var slot : BuildSlot = await api.request_build_slot()
 	var build = build_component.instantiate()
 	build.api = api
 	build.build_id = slot.build_id
 	%BuildsContainer.remove_child(%EmptyText)
 	%BuildsContainer.add_child(build)
 	await zip_and_upload_project(slot.upload_url)
+	print(api.last_error)
+	api.dispatch_build(slot.build_id, "com.shipgodot.demo", "4.6.1")
 
 
 # TODO: Upload in parts

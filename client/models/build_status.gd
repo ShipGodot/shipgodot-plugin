@@ -5,7 +5,6 @@ class BuildStatus:
 	var build_id: String
 	var status: Status = Status.UNKNOWN
 	var status_raw: String
-	var bundle_id: String
 	var created_at: int
 	var started_at: int             ## 0 if not started
 	var finished_at: int            ## 0 if not finished
@@ -31,7 +30,6 @@ class BuildStatus:
 		r.build_id = str(d.get("build_id", ""))
 		r.status_raw = str(d.get("status", ""))
 		r.status = _STATUS_MAP.get(r.status_raw, Status.UNKNOWN)
-		r.bundle_id = str(d.get("bundle_id", ""))
 		r.created_at = int(d.get("created_at", 0))
 		r.started_at = int(d.get("started_at", 0))
 		r.finished_at = int(d.get("finished_at", 0))

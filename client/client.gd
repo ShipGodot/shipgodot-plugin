@@ -50,11 +50,8 @@ func get_session() -> SessionInfo:
 
 
 ## POST /v1/builds — request a build slot + presigned upload URL.
-func request_build_slot(bundle_id: String, godot_version: String = "") -> BuildSlot:
-	var body := {"bundle_id": bundle_id}
-	if not godot_version.is_empty():
-		body["godot_version"] = godot_version
-	var d := await _request_json(HTTPClient.METHOD_POST, "/v1/builds", body, _Auth.SEAT_TOKEN)
+func request_build_slot() -> BuildSlot:
+	var d := await _request_json(HTTPClient.METHOD_POST, "/v1/builds", {}, _Auth.SEAT_TOKEN)
 	return null if d == null else BuildSlot.from_dict(d)
 
 
@@ -64,27 +61,34 @@ func upload_project_zip(upload_url: String, zip_path: String) -> bool:
 	last_error = null
 	var bytes := FileAccess.get_file_as_bytes(zip_path)
 	if bytes.is_empty() and FileAccess.get_open_error() != OK:
-		return _fail(ApiError.transport("Cannot read zip: %s" % zip_path))
+		_fail(ApiError.transport("Cannot read zip: %s" % zip_path))
+		return false
 	var http := _make_http()
 	var err := http.request_raw(upload_url, PackedStringArray(["Content-Type: application/zip"]),
 			HTTPClient.METHOD_PUT, bytes)
 	if err != OK:
 		http.queue_free()
-		return _fail(ApiError.transport("HTTPRequest.request_raw failed: %d" % err))
+		_fail(ApiError.transport("HTTPRequest.request_raw failed: %d" % err))
+		return false
 	var resp: Array = await http.request_completed
 	http.queue_free()
 	var code := int(resp[1])
 	if resp[0] != HTTPRequest.RESULT_SUCCESS:
-		return _fail(ApiError.transport("Upload transport error: %d" % resp[0]))
+		_fail(ApiError.transport("Upload transport error: %d" % resp[0]))
+		return false
 	if code < 200 or code >= 300:
-		return _fail(ApiError.from_response(code, {"error": "upload_failed"}))
+		_fail(ApiError.from_response(code, {"error": "upload_failed"}))
+		return false
 	return true
 
 
 ## POST /v1/builds/{id}/dispatch — start the build after the upload succeeded.
-func dispatch_build(build_id: String) -> BuildStatus:
+func dispatch_build(build_id: String, bundle_id: String, godot_version: String = "") -> BuildStatus:
+	var body := {"bundle_id": bundle_id}
+	if not godot_version.is_empty():
+		body["godot_version"] = godot_version
 	var d := await _request_json(HTTPClient.METHOD_POST,
-			"/v1/builds/%s/dispatch" % build_id.uri_encode(), {}, _Auth.SEAT_TOKEN)
+			"/v1/builds/%s/dispatch" % build_id.uri_encode(), body, _Auth.SEAT_TOKEN)
 	return null if d == null else BuildStatus.from_dict(d)
 
 
