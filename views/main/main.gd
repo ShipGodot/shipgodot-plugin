@@ -14,16 +14,30 @@ func _ready() -> void:
 	%RunButton.pressed.connect(_create_new_build)
 
 
+func _get_engine_version() -> String:
+	var info := Engine.get_version_info()
+	var major: int = info["major"]
+	var minor: int = info["minor"]
+	var patch: int = info["patch"]
+	var status: String = info["status"]
+
+	if patch > 0:
+		#return "%d.%d.%d-%s" % [major, minor, patch, status]
+		return "%d.%d.%d" % [major, minor, patch]
+	
+	#return "%d.%d-%s" % [major, minor, status]
+	return "%d.%d" % [major, minor]
+
 func _create_new_build() -> void:
 	var slot : BuildSlot = await api.request_build_slot()
 	var build = build_component.instantiate()
 	build.api = api
 	build.build_id = slot.build_id
-	%BuildsContainer.remove_child(%EmptyText)
+	if %EmptyText:
+		%EmptyText.queue_free()
 	%BuildsContainer.add_child(build)
 	await zip_and_upload_project(slot.upload_url)
-	print(api.last_error)
-	api.dispatch_build(slot.build_id, "com.shipgodot.demo", "4.6.1")
+	api.dispatch_build(slot.build_id, "com.shipgodot.demo", _get_engine_version())
 
 
 # TODO: Upload in parts
