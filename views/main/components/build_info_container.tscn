@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dbnems6773efa"]
 
-[ext_resource type="StyleBox" uid="uid://b0g8412m2eypp" path="res://addons/shipgodot_ios/styles/panel_build_info.tres" id="1_g2bxi"]
-[ext_resource type="Texture2D" uid="uid://c1sjlmwd281b3" path="res://addons/shipgodot_ios/views/icons/cogs.svg" id="2_1dfrv"]
+[ext_resource type="StyleBox" uid="uid://b0g8412m2eypp" path="res://addons/shipgodot_ios/views/main/components/panel_build_info.tres" id="1_g2bxi"]
 [ext_resource type="Script" uid="uid://bmsnggnlqdayl" path="res://addons/shipgodot_ios/views/main/components/build_info_container.gd" id="2_pmt6a"]
+[ext_resource type="PackedScene" uid="uid://mbckskx4lbfv" path="res://addons/shipgodot_ios/views/main/components/cogs.tscn" id="3_1dfrv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tiyo"]
 bg_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
@@ -18,9 +18,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -256.0
-offset_top = -58.0
+offset_top = -69.0
 offset_right = 256.0
-offset_bottom = 58.0
+offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
@@ -43,15 +43,14 @@ theme_override_constants/separation = 0
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="BuildIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=234072667]
-custom_minimum_size = Vector2(96, 96)
+[node name="Cogs" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1813255783 instance=ExtResource("3_1dfrv")]
+unique_name_in_owner = true
+modulate = Color(0.9607843, 0.9607843, 0.9607843, 1)
+custom_minimum_size = Vector2(128, 96)
 layout_mode = 2
-texture = ExtResource("2_1dfrv")
-expand_mode = 1
-stretch_mode = 5
 
-[node name="Padding" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1787488977]
-custom_minimum_size = Vector2(32, 0)
+[node name="Padding2" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=880366103]
+custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 
 [node name="BuildInfo" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1753699362]
@@ -60,52 +59,107 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="ProjectName" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo" unique_id=204323190]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = ExtResource("1_g2bxi")
 theme_override_styles/focus = ExtResource("1_g2bxi")
-text = "Multitouch Cubes Demo"
+text = "Multitouch Cubes Demo "
 scroll_active = false
-vertical_alignment = 1
+vertical_alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo" unique_id=540456824]
+layout_mode = 2
+
+[node name="BuildId" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer3" unique_id=1982925361]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+theme_override_font_sizes/mono_font_size = 12
+theme_override_styles/normal = ExtResource("1_g2bxi")
+theme_override_styles/focus = ExtResource("1_g2bxi")
+bbcode_enabled = true
+scroll_active = false
+vertical_alignment = 2
+
+[node name="LogLink" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer3" unique_id=1337024108]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(124, 16)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
+theme_override_font_sizes/mono_font_size = 12
+theme_override_styles/normal = ExtResource("1_g2bxi")
+theme_override_styles/focus = ExtResource("1_g2bxi")
+bbcode_enabled = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo" unique_id=1026702160]
 layout_mode = 2
 
 [node name="Version" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer" unique_id=1253192586]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
 theme_override_styles/normal = ExtResource("1_g2bxi")
 theme_override_styles/focus = ExtResource("1_g2bxi")
-text = "v1.0.0"
+text = "0.0.28"
 scroll_active = false
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="Version2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer" unique_id=1847137876]
+[node name="Date" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer" unique_id=1847137876]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/default_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
+theme_override_colors/default_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+theme_override_font_sizes/normal_font_size = 12
 theme_override_styles/normal = ExtResource("1_g2bxi")
 theme_override_styles/focus = ExtResource("1_g2bxi")
 text = "July 16th, 2026 18:54"
 scroll_active = false
 horizontal_alignment = 2
-vertical_alignment = 1
+vertical_alignment = 2
+
+[node name="Padding3" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo" unique_id=1448544427]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
 
 [node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo" unique_id=742832128]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1tiyo")
 
-[node name="Status" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo" unique_id=1314660169]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 32)
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo" unique_id=2109837278]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+
+[node name="Status" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer2" unique_id=1314660169]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_styles/normal = ExtResource("1_g2bxi")
 theme_override_styles/focus = ExtResource("1_g2bxi")
 text = "In queue"
 scroll_active = false
+vertical_alignment = 1
+
+[node name="Duration" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer2" unique_id=524644551]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
+theme_override_font_sizes/mono_font_size = 16
+theme_override_styles/normal = ExtResource("1_g2bxi")
+theme_override_styles/focus = ExtResource("1_g2bxi")
+bbcode_enabled = true
+text = "Duration: [code] 4m 25s [/code]"
+horizontal_alignment = 2
 vertical_alignment = 1

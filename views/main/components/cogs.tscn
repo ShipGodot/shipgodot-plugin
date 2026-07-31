@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://mbckskx4lbfv"]
+
+[ext_resource type="Texture2D" uid="uid://bgx8sxatjafo4" path="res://addons/shipgodot_ios/views/icons/cog.svg" id="1_65xec"]
+[ext_resource type="Script" uid="uid://cil6etyfgofbn" path="res://addons/shipgodot_ios/views/main/components/cogs.gd" id="1_udynn"]
+
+[node name="Control" type="Control" unique_id=1813255783]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_udynn")
+
+[node name="Cog1" type="TextureRect" parent="." unique_id=920628920]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.174988
+offset_top = -18.345001
+offset_right = 44.825012
+offset_bottom = 45.655
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_65xec")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cog2" type="TextureRect" parent="." unique_id=2125813923]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.399986
+offset_top = -55.4
+offset_right = 10.600014
+offset_bottom = 8.599998
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.675, 0.675)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_65xec")
+expand_mode = 1
+stretch_mode = 5
