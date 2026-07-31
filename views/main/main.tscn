@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://cwr5yui31mjev" path="res://addons/shipgodot_ios/views/main/main.gd" id="1_gxt26"]
 [ext_resource type="StyleBox" uid="uid://byn0a0unhb06d" path="res://addons/shipgodot_ios/styles/panel_background.tres" id="2_51du6"]
 [ext_resource type="StyleBox" uid="uid://cjokvwkd15xb2" path="res://addons/shipgodot_ios/styles/panel_section.tres" id="2_j622v"]
-[ext_resource type="PackedScene" uid="uid://dbnems6773efa" path="res://addons/shipgodot_ios/views/main/components/build_info_container.tscn" id="5_ajklp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dlhn"]
 bg_color = Color(0.41568628, 1, 0.4862745, 1)
@@ -335,18 +334,27 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("2_j622v")
 
-[node name="BuildsContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/BuildsOverwievContainer" unique_id=931126727]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/BuildsOverwievContainer" unique_id=931126727]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="BuildInfoContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/BuildsOverwievContainer/BuildsContainer" unique_id=823469388 instance=ExtResource("5_ajklp")]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/BuildsOverwievContainer/MarginContainer" unique_id=564220702]
 layout_mode = 2
+draw_focus_border = true
+horizontal_scroll_mode = 0
+scroll_hint_mode = 1
+tile_scroll_hint = true
 
-[node name="EmptyText" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/BuildsOverwievContainer/BuildsContainer" unique_id=483722843]
+[node name="BuildsContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/BuildsOverwievContainer/MarginContainer/ScrollContainer" unique_id=661631820]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="EmptyText" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Builds/BuildsOverwievContainer/MarginContainer" unique_id=483722843]
 unique_name_in_owner = true
 layout_mode = 2
 text = "This is where your builds will appear."
