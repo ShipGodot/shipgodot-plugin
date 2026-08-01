@@ -1,0 +1,310 @@
+[gd_scene format=3 uid="uid://cwlkrdoickbvc"]
+
+[ext_resource type="Script" uid="uid://bht8unpoi2vb0" path="res://addons/shipgodot_ios/components/modal/modal.gd" id="1_gpp6f"]
+[ext_resource type="Texture2D" uid="uid://d3hpd3cuh51yg" path="res://addons/shipgodot_ios/components/modal/icons/warning.svg" id="2_c2nfj"]
+[ext_resource type="Texture2D" uid="uid://twodfbl2vglp" path="res://addons/shipgodot_ios/components/modal/icons/info.svg" id="3_c711b"]
+[ext_resource type="Texture2D" uid="uid://x25gttwxkreo" path="res://addons/shipgodot_ios/components/modal/icons/error.svg" id="4_rqpr0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyiq0"]
+bg_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+border_width_top = 83
+border_color = Color(0.23567617, 0.23567617, 0.23567617, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2nfj"]
+
+[sub_resource type="Animation" id="Animation_bf77v"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Modal/Panel:anchor_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Modal/Panel:anchor_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Modal/Panel:offset_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_pbhf1"]
+resource_name = "modal_in"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Modal/Panel:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(1, 0, 0, 0.25, 0, 0, -0.5, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Modal/Panel:offset_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(800, 0, 0, 0.25, 0, 0, -0.5, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Modal")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"_set_panel_visibility"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8cdv3"]
+resource_name = "modal_out"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Modal/Panel:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.5, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Modal/Panel:offset_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.5, 0, 800, -0.25, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Modal")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"_set_panel_visibility"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Modal")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"closed"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vlww"]
+_data = {
+&"RESET": SubResource("Animation_bf77v"),
+&"modal_in": SubResource("Animation_pbhf1"),
+&"modal_out": SubResource("Animation_8cdv3")
+}
+
+[node name="Modal" type="Control" unique_id=1253714221]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_gpp6f")
+
+[node name="Panel" type="Panel" parent="." unique_id=1418441633]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nyiq0")
+
+[node name="Pictogram" type="TextureRect" parent="Panel" unique_id=551257240]
+unique_name_in_owner = true
+self_modulate = Color(1, 0.14117648, 0.44313726, 0.1764706)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 128.0
+grow_vertical = 2
+scale = Vector2(4, 4)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_rqpr0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PictogramWarning" type="TextureRect" parent="Panel" unique_id=2111761758]
+visible = false
+self_modulate = Color(0.686528, 0.54295653, 0, 0.1764706)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+scale = Vector2(4, 4)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_c2nfj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PictogramInfo" type="TextureRect" parent="Panel" unique_id=320959303]
+visible = false
+self_modulate = Color(0.49411765, 0.48235294, 1, 0.1764706)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+scale = Vector2(4, 4)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_c711b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PictogramError" type="TextureRect" parent="Panel" unique_id=780465650]
+visible = false
+self_modulate = Color(0.9999998, 0.14288473, 0.44245917, 0.1764706)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+scale = Vector2(4, 4)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_rqpr0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=2056366519]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1842116579]
+layout_mode = 2
+
+[node name="Padding" type="Control" parent="Panel/MarginContainer/VBoxContainer" unique_id=149112637]
+custom_minimum_size = Vector2(12, 64)
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer" unique_id=1224555226]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c2nfj")
+bbcode_enabled = true
+text = "Uh oh!"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Padding2" type="Control" parent="Panel/MarginContainer/VBoxContainer" unique_id=1050815524]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1991973548]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextContent" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=391598603]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c2nfj")
+text = "This is the text that will appear in the warning message!
+- be sure to read its contents as they are super important!
+- do not overlook any details here! super important stuff
+
+have a good day sir."
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="Control" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1967592877]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/ButtonContainer" unique_id=1425551533]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "OK"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=958467657]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_5vlww")

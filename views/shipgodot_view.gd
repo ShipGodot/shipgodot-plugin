@@ -3,6 +3,9 @@ extends Control
 
 signal change_view(next: PackedScene)
 
+signal request_modal(data: SGModalData)
+signal processing(value : bool)
+
 var api : ShipGodotClient
 
 func _paste_from_clipboard(where: LineEdit) -> void:

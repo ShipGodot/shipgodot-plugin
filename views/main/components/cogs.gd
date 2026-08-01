@@ -10,17 +10,12 @@ const BuildStatus = preload("res://addons/shipgodot_ios/client/models/build_stat
 @export var normal_color : Color = Color.WHITE_SMOKE
 
 
-var status : BuildStatus:
+var status : BuildStatus = BuildStatus.new():
 	get:
 		return status
 	set(value):
 		status = value
 		set_process(true)
-
-
-func _ready() -> void:
-	modulate = normal_color
-	set_process(false)
 
 
 func _process(delta: float) -> void:
@@ -30,10 +25,7 @@ func _process(delta: float) -> void:
 	elif status.is_finished():
 		modulate = success_color
 		set_process(false)
-	elif status.is_processing():
+	else:
 		modulate = normal_color
 		%Cog1.rotation = %Cog1.rotation + delta * rotation_speed
 		%Cog2.rotation = %Cog2.rotation - delta * rotation_speed
-	else:
-		modulate = normal_color
-		set_process(false)

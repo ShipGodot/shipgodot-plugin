@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d3gabwxe7btvm" path="res://addons/shipgodot_ios/client/client.gd" id="1_kb71q"]
 [ext_resource type="Script" uid="uid://bky0ofgjjgl2f" path="res://addons/shipgodot_ios/plugin.gd" id="1_tn1s8"]
+[ext_resource type="PackedScene" uid="uid://cwlkrdoickbvc" path="res://addons/shipgodot_ios/components/modal/modal.tscn" id="3_btxi5"]
+[ext_resource type="PackedScene" uid="uid://mbckskx4lbfv" path="res://addons/shipgodot_ios/views/main/components/cogs.tscn" id="4_nyiq0"]
 
 [node name="Plugin" type="Control" unique_id=1494417102]
 clip_contents = true
@@ -18,3 +20,33 @@ script = ExtResource("1_tn1s8")
 unique_name_in_owner = true
 script = ExtResource("1_kb71q")
 metadata/_custom_type_script = "uid://d3gabwxe7btvm"
+
+[node name="Modal" parent="." unique_id=1253714221 instance=ExtResource("3_btxi5")]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 1
+
+[node name="Processing" type="Control" parent="." unique_id=816607812]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Processing" unique_id=1898161487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="Control" parent="Processing" unique_id=1813255783 instance=ExtResource("4_nyiq0")]
+modulate = Color(0.9607843, 0.9607843, 0.9607843, 1)
+layout_mode = 1
+rotation_speed = 0.6
