@@ -3,6 +3,7 @@ extends ShipGodotView
 
 const AppleApiKey = preload("res://addons/shipgodot_ios/client/models/apple_api_key.gd").AppleApiKey
 const ActivateResponse = preload("res://addons/shipgodot_ios/client/models/activate_response.gd").ActivateResponse
+const SGModalData = preload("res://addons/shipgodot_ios/components/modal/sg_modal_data.gd")
 
 
 var bundle_id_scene = preload("res://addons/shipgodot_ios/views/project_setup/project_setup.tscn")
@@ -10,6 +11,8 @@ var bundle_id_scene = preload("res://addons/shipgodot_ios/views/project_setup/pr
 var apple_team_id : String = ""
 var apple_key : AppleApiKey
 var dialog : FileDialog
+
+@export var security_info : SGModalData
 
 func _ready() -> void:
 	apple_key = AppleApiKey.new()
@@ -19,6 +22,7 @@ func _ready() -> void:
 	
 	%P8APIKeyButton.pressed.connect(_on_load_key_button_pressed)
 	%ContinueButton.pressed.connect(_on_continue)
+	request_modal.emit(security_info)
 
 func _on_load_key_button_pressed() -> void:
 	dialog = FileDialog.new()
@@ -47,8 +51,9 @@ func _on_continue() -> void:
 	apple_team_id = %TeamID.get_text()
 	apple_key.key_id = %KeyID.get_text()
 	apple_key.issuer_id = %IssuerID.get_text()
-	# TODO: Uncomment when ready to test API
+	processing.emit(true)
 	var act := await api.activate(api.license_key, "demo_device", "demo_instance", apple_team_id, apple_key)
+	processing.emit(false)
 	if act:
 		print(act)
 		api.seat_token = act.seat_token

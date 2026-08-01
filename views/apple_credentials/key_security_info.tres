@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SGModalData" format=3 uid="uid://bncixpvs4ipue"]
+
+[ext_resource type="Script" uid="uid://cyt0cl8ws6rej" path="res://addons/shipgodot_ios/components/modal/sg_modal_data.gd" id="1_khrxn"]
+[ext_resource type="Texture2D" uid="uid://twodfbl2vglp" path="res://addons/shipgodot_ios/components/modal/icons/info.svg" id="1_lulym"]
+
+[resource]
+script = ExtResource("1_khrxn")
+icon = ExtResource("1_lulym")
+title = "Your keys stay locked away"
+content = "Your Apple signing key is stored in GitHub's encrypted secrets and pulled in only for the build.
+Used inside a throwaway environment and never kept afterward."
+button_text = "OK"
+metadata/_custom_type_script = "uid://cyt0cl8ws6rej"
