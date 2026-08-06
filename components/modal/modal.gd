@@ -10,13 +10,10 @@ func _ready() -> void:
 
 
 func _set_panel_visibility(value : bool) -> void:
-	print("setting panel to")
-	print(value)
 	%Panel.visible = value
 
 
 func open(data : SGModalData) -> void:
-	print("opening the panel!")
 	current = data
 	%Pictogram.texture = data.icon
 	%Pictogram.self_modulate = data.icon_tint
@@ -28,8 +25,5 @@ func open(data : SGModalData) -> void:
 
 
 func close() -> void:
+	current.close()
 	%AnimationPlayer.play("modal_out")
-
-
-func closed() -> void:
-	current.modal_closed.emit()

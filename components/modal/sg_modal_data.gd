@@ -1,7 +1,6 @@
+@tool
 class_name SGModalData
 extends Resource
-
-signal modal_closed
 
 enum Type { INFO, WARNING, ERROR }
 
@@ -11,3 +10,11 @@ enum Type { INFO, WARNING, ERROR }
 @export var title : String
 @export_multiline var content : String
 @export var button_text : String
+
+
+func wait_until_closed() -> void:
+	await changed
+
+
+func close() -> void:
+	emit_changed()

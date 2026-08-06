@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://fmnphghe04eq" path="res://addons/shipgodot_ios/views/project_setup/project_setup.gd" id="1_1wjy2"]
 [ext_resource type="Texture2D" uid="uid://cwsb7xcp3laaj" path="res://addons/shipgodot_ios/shipgodot.svg" id="1_b37nu"]
 [ext_resource type="StyleBox" uid="uid://byn0a0unhb06d" path="res://addons/shipgodot_ios/styles/panel_background.tres" id="1_esruo"]
+[ext_resource type="Resource" uid="uid://bae4uy5ghym7s" path="res://addons/shipgodot_ios/views/project_setup/modal_data/bundle_id_empty.tres" id="2_x3036"]
+[ext_resource type="Resource" uid="uid://6cyhdvtjb4sj" path="res://addons/shipgodot_ios/views/project_setup/modal_data/project_settings_change.tres" id="3_yyrh6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbn8p"]
 
@@ -17,6 +19,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1wjy2")
+bundle_id_error = ExtResource("2_x3036")
+settings_change_info = ExtResource("3_yyrh6")
 
 [node name="Panel" type="Panel" parent="." unique_id=239215116]
 clip_contents = true
@@ -78,46 +82,13 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=768097407]
+[node name="BundleID" type="LineEdit" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=768097407]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-placeholder_text = "com"
-alignment = 1
-emoji_menu_enabled = false
-
-[node name="Padding2" type="Label" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=973331715]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-size_flags_vertical = 1
-text = "."
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="LineEdit2" type="LineEdit" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=591919170]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-placeholder_text = "example-domain"
-alignment = 1
-emoji_menu_enabled = false
-
-[node name="Padding4" type="Label" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=1449846087]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-size_flags_vertical = 1
-text = "."
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="LineEdit3" type="LineEdit" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=1274603972]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-placeholder_text = "example-game-name"
+placeholder_text = "com.studio.mygame"
 alignment = 1
 emoji_menu_enabled = false
 

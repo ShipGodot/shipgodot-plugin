@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SGModalData" format=3 uid="uid://6cyhdvtjb4sj"]
+
+[ext_resource type="Texture2D" uid="uid://twodfbl2vglp" path="res://addons/shipgodot_ios/components/modal/icons/info.svg" id="1_12dmo"]
+[ext_resource type="Script" uid="uid://cyt0cl8ws6rej" path="res://addons/shipgodot_ios/components/modal/sg_modal_data.gd" id="2_lmbb0"]
+
+[resource]
+script = ExtResource("2_lmbb0")
+icon = ExtResource("1_12dmo")
+title = "Update project settings for iOS"
+button_text = "Apply changes"
+metadata/_custom_type_script = "uid://cyt0cl8ws6rej"
