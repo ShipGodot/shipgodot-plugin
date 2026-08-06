@@ -3,12 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://cwsb7xcp3laaj" path="res://addons/shipgodot_ios/shipgodot.svg" id="1_4dlhn"]
 [ext_resource type="Script" uid="uid://cwr5yui31mjev" path="res://addons/shipgodot_ios/views/main/main.gd" id="1_gxt26"]
 [ext_resource type="StyleBox" uid="uid://byn0a0unhb06d" path="res://addons/shipgodot_ios/styles/panel_background.tres" id="2_51du6"]
+[ext_resource type="PackedScene" uid="uid://dbnems6773efa" path="res://addons/shipgodot_ios/views/main/components/build_info_container/build_info_container.tscn" id="2_ajklp"]
 [ext_resource type="StyleBox" uid="uid://cjokvwkd15xb2" path="res://addons/shipgodot_ios/styles/panel_section.tres" id="2_j622v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dlhn"]
 bg_color = Color(0.41568628, 1, 0.4862745, 1)
 
-[node name="SettingsChangeAlert" type="Control" unique_id=278528658]
+[node name="MainView" type="Control" unique_id=278528658]
 clip_contents = true
 custom_minimum_size = Vector2(640, 640)
 layout_mode = 3
@@ -18,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gxt26")
+build_component = ExtResource("2_ajklp")
 
 [node name="Panel" type="Panel" parent="." unique_id=239215116]
 layout_mode = 1

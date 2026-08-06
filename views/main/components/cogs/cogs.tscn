@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://mbckskx4lbfv"]
 
 [ext_resource type="Texture2D" uid="uid://bgx8sxatjafo4" path="res://addons/shipgodot_ios/views/icons/cog.svg" id="1_65xec"]
-[ext_resource type="Script" uid="uid://cil6etyfgofbn" path="res://addons/shipgodot_ios/views/main/components/cogs.gd" id="1_udynn"]
+[ext_resource type="Script" uid="uid://cil6etyfgofbn" path="res://addons/shipgodot_ios/views/main/components/cogs/cogs.gd" id="1_udynn"]
 
 [node name="Control" type="Control" unique_id=1813255783]
 custom_minimum_size = Vector2(96, 96)

@@ -5,7 +5,7 @@ const BuildSlot = preload("res://addons/shipgodot_ios/client/models/build_slot.g
 
 const ZIP_PATH := "user://project_upload.zip"
 
-var build_component = preload("res://addons/shipgodot_ios/views/main/components/build_info_container.tscn")
+@export var build_component : PackedScene
 
 var _default_excludes := [".godot", ".git", ".import"]
 

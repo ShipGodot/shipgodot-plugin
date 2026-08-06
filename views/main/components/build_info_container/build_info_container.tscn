@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dbnems6773efa"]
 
-[ext_resource type="StyleBox" uid="uid://b0g8412m2eypp" path="res://addons/shipgodot_ios/views/main/components/panel_build_info.tres" id="1_g2bxi"]
-[ext_resource type="Script" uid="uid://bmsnggnlqdayl" path="res://addons/shipgodot_ios/views/main/components/build_info_container.gd" id="2_pmt6a"]
-[ext_resource type="PackedScene" uid="uid://mbckskx4lbfv" path="res://addons/shipgodot_ios/views/main/components/cogs.tscn" id="3_1dfrv"]
+[ext_resource type="StyleBox" uid="uid://b0g8412m2eypp" path="res://addons/shipgodot_ios/views/main/components/build_info_container/panel_build_info.tres" id="1_g2bxi"]
+[ext_resource type="Script" uid="uid://bmsnggnlqdayl" path="res://addons/shipgodot_ios/views/main/components/build_info_container/build_info_container.gd" id="2_pmt6a"]
+[ext_resource type="PackedScene" uid="uid://mbckskx4lbfv" path="res://addons/shipgodot_ios/views/main/components/cogs/cogs.tscn" id="3_1dfrv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tiyo"]
 bg_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
