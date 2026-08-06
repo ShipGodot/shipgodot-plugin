@@ -25,6 +25,7 @@ func _on_continue() -> void:
 		request_modal.emit(settings_change_info)
 		await settings_change_info.wait_until_closed()
 		check_ios_settings(true)
+		settings_change_info.content = ""
 
 	change_view.emit(main_scene)
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d3gabwxe7btvm" path="res://addons/shipgodot_ios/client/client.gd" id="1_kb71q"]
 [ext_resource type="Script" uid="uid://bky0ofgjjgl2f" path="res://addons/shipgodot_ios/plugin.gd" id="1_tn1s8"]
 [ext_resource type="PackedScene" uid="uid://cwlkrdoickbvc" path="res://addons/shipgodot_ios/components/modal/modal.tscn" id="3_btxi5"]
-[ext_resource type="PackedScene" uid="uid://mbckskx4lbfv" path="res://addons/shipgodot_ios/views/main/components/cogs.tscn" id="4_nyiq0"]
+[ext_resource type="PackedScene" uid="uid://mbckskx4lbfv" path="res://addons/shipgodot_ios/views/main/components/cogs/cogs.tscn" id="4_nyiq0"]
 
 [node name="Plugin" type="Control" unique_id=1494417102]
 clip_contents = true
