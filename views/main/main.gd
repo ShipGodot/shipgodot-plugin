@@ -37,7 +37,7 @@ func _create_new_build() -> void:
 		%EmptyText.queue_free()
 	%BuildsContainer.add_child(build)
 	await zip_and_upload_project(slot.upload_url)
-	api.dispatch_build(slot.build_id, "com.shipgodot.demo", _get_engine_version())
+	api.dispatch_build(slot.build_id, get_bundle_id(), _get_engine_version())
 
 
 # TODO: Upload in parts

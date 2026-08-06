@@ -5,6 +5,8 @@
 [ext_resource type="StyleBox" uid="uid://byn0a0unhb06d" path="res://addons/shipgodot_ios/styles/panel_background.tres" id="2_51du6"]
 [ext_resource type="PackedScene" uid="uid://dbnems6773efa" path="res://addons/shipgodot_ios/views/main/components/build_info_container/build_info_container.tscn" id="2_ajklp"]
 [ext_resource type="StyleBox" uid="uid://cjokvwkd15xb2" path="res://addons/shipgodot_ios/styles/panel_section.tres" id="2_j622v"]
+[ext_resource type="Script" uid="uid://c3g0q7tibu433" path="res://addons/shipgodot_ios/views/main/scripts/version_text.gd" id="6_gxt26"]
+[ext_resource type="Script" uid="uid://bl0ay6bvnxn6" path="res://addons/shipgodot_ios/views/main/scripts/project_setting_label.gd" id="7_m52ik"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dlhn"]
 bg_color = Color(0.41568628, 1, 0.4862745, 1)
@@ -83,9 +85,10 @@ layout_mode = 2
 [node name="VersionText" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/PluginInfoContainer/MarginContainer/PluginInfo" unique_id=948415966]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "v.0.1.0 alpha"
+text = "plugin version"
 horizontal_alignment = 2
 vertical_alignment = 2
+script = ExtResource("6_gxt26")
 
 [node name="Padding" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=574866822]
 custom_minimum_size = Vector2(0, 8)
@@ -183,14 +186,18 @@ text = "Bundle ID:"
 scroll_active = false
 vertical_alignment = 1
 
+[node name="ReactiveBundleID" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1811706117]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_51du6")
+text = "???.?????.???"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_m52ik")
+setting_path = "shipgodot/ios/bundle_id"
+
 [node name="Padding5" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=779166779]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
-
-[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1938442556]
-layout_mode = 2
-text = "com.shipgodot.demo"
-alignment = 1
 
 [node name="Padding6" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1474713558]
 custom_minimum_size = Vector2(0, 8)
@@ -208,10 +215,14 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="LineEdit2" type="LineEdit" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1054038934]
+[node name="ReactiveProjectVersion" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=777206112]
 layout_mode = 2
-text = "1.0.0"
-alignment = 1
+theme_override_styles/normal = ExtResource("2_51du6")
+text = "?.?.?"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_m52ik")
+setting_path = "application/config/version"
 
 [node name="Padding2" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=222103418]
 custom_minimum_size = Vector2(0, 8)
