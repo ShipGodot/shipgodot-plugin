@@ -247,6 +247,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_c2nfj")
+bbcode_enabled = true
 text = "This is the text that will appear in the warning message!
 - be sure to read its contents as they are super important!
 - do not overlook any details here! super important stuff

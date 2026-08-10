@@ -20,6 +20,12 @@ const BuildSlot = preload("res://addons/shipgodot_ios/client/models/build_slot.g
 const BuildStatus = preload("res://addons/shipgodot_ios/client/models/build_status.gd").BuildStatus
 const Activation = preload("res://addons/shipgodot_ios/client/models/activation.gd").Activation
 
+
+func get_last_error_formatted() -> String:
+	const ERROR_FORMAT := "%s\n\n(%d / %s)"
+	return ERROR_FORMAT % [last_error.message, last_error.http_code, last_error.code]
+
+
 # ------------------------------------------------------------
 # Endpoints
 # ------------------------------------------------------------
