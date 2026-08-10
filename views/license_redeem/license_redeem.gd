@@ -35,6 +35,8 @@ func _on_continue() -> void:
 		request_modal.emit(error_modal)
 		return
 
+	api.seat_token = act.seat_token
+	store.set_seat_token(act.seat_token)
 	change_view.emit(_project_setup_scene)
 
 
