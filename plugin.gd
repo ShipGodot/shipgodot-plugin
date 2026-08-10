@@ -53,7 +53,6 @@ func _disconnect_signals() -> void:
 
 func _get_session_info() -> void:
 	if not _store.has_seat_token():
-		print("no token!")
 		return
 
 	%ShipGodotClient.seat_token = _store.get_seat_token()
