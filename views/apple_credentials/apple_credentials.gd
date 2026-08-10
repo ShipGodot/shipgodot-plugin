@@ -53,8 +53,9 @@ func _on_continue() -> void:
 	apple_key.issuer_id = %IssuerID.get_text()
 	processing.emit(true)
 	var act := await api.activate(api.license_key, "demo_device", "demo_instance", apple_team_id, apple_key)
+	# TODO: check if activation is successful
 	processing.emit(false)
 	if act:
-		#TODO: save the token
 		api.seat_token = act.seat_token
+		store.set_seat_token(act.seat_token)
 	change_view.emit(bundle_id_scene)

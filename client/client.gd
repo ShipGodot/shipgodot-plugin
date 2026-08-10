@@ -7,8 +7,8 @@ signal request_failed(error: ApiError)
 
 const BASE_URL := "https://shipgodot-automate-ios-testing.shipgodot.workers.dev"
 
-var seat_token: String = ""      ## Bearer token from activate(); persist it.
-var license_key: String = ""     ## Only needed for the recovery endpoints.
+var seat_token: String = ""
+var license_key: String = ""
 var timeout_seconds: float = 30.0
 var last_error: ApiError = null
 
