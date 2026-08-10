@@ -52,7 +52,7 @@ func _on_continue() -> void:
 	apple_key.key_id = %KeyID.get_text()
 	apple_key.issuer_id = %IssuerID.get_text()
 	processing.emit(true)
-	var act := await api.activate(api.license_key, "demo_device", "demo_instance", apple_team_id, apple_key)
+	var act := await api.activate(api.license_key, store.get_device_id(), store.get_device_name(), apple_team_id, apple_key)
 	# TODO: check if activation is successful
 	processing.emit(false)
 	if act:

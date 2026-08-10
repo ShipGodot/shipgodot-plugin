@@ -62,6 +62,16 @@ class ShipGodotStore:
 		return id
 
 
+	func set_device_name(name: String) -> Error:
+		cfg.set_value(SECTION, "device_name", name)
+		return _save()
+
+
+	func get_device_name() -> String:
+		var id: String = cfg.get_value(SECTION, "device_name", "")
+		return id
+
+
 	func clear_credentials() -> void:
 		# Call after /v1/deactivate, or on 401 from /v1/me.
 		# Keep device_id so the same machine reactivates into the same activation.
