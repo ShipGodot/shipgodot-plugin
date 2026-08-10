@@ -25,6 +25,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wdxt1")
+malformed_license_message = "That doesn't look like a valid license key. Keys are 36 characters long and look like:[br][br]0123abcd-4567-89ef-0123-456789abcdef[br][br]Check for missing characters or extra spaces, then try again."
+empty_dev_name_message = "Give this device a name so you can recognise it later."
 metadata/_custom_type_script = "uid://nxpa0hvvtots"
 
 [node name="Panel" type="Panel" parent="." unique_id=239215116]
@@ -95,7 +97,6 @@ size_flags_vertical = 4
 placeholder_text = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 alignment = 1
 emoji_menu_enabled = false
-secret = true
 
 [node name="Padding2" type="Control" parent="MarginContainer/VBoxContainer/LicenseKeyInputContainer" unique_id=703307862]
 custom_minimum_size = Vector2(16, 0)
