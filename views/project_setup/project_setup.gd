@@ -10,6 +10,9 @@ var main_scene = preload("res://addons/shipgodot_ios/views/main/main.tscn")
 
 func _ready() -> void:
 	%ContinueButton.pressed.connect(_on_continue)
+	if not get_bundle_id().is_empty():
+		%BundleID.text = get_bundle_id()
+		_on_continue()
 
 
 func _on_continue() -> void:
