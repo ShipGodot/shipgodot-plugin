@@ -6,10 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dbnems6773efa" path="res://addons/shipgodot_ios/views/main/components/build_info_container/build_info_container.tscn" id="2_ajklp"]
 [ext_resource type="StyleBox" uid="uid://cjokvwkd15xb2" path="res://addons/shipgodot_ios/styles/panel_section.tres" id="2_j622v"]
 [ext_resource type="Script" uid="uid://c3g0q7tibu433" path="res://addons/shipgodot_ios/views/main/scripts/version_text.gd" id="6_gxt26"]
+[ext_resource type="StyleBox" uid="uid://di7muqrqsq8cd" path="res://addons/shipgodot_ios/views/main/panel_build_info_label.tres" id="7_c8jof"]
 [ext_resource type="Script" uid="uid://bl0ay6bvnxn6" path="res://addons/shipgodot_ios/views/main/scripts/project_setting_label.gd" id="7_m52ik"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dlhn"]
-bg_color = Color(0.41568628, 1, 0.4862745, 1)
+[ext_resource type="StyleBox" uid="uid://b0g8412m2eypp" path="res://addons/shipgodot_ios/views/main/panel_build_info.tres" id="8_fbxwr"]
 
 [node name="MainView" type="Control" unique_id=278528658]
 clip_contents = true
@@ -85,13 +84,52 @@ layout_mode = 2
 [node name="VersionText" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/PluginInfoContainer/MarginContainer/PluginInfo" unique_id=948415966]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "plugin version"
+text = "v.0.2.0 alpha"
 horizontal_alignment = 2
 vertical_alignment = 2
 script = ExtResource("6_gxt26")
 
 [node name="Padding" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=574866822]
 custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="LicenseInfoContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=1251552896]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_j622v")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer" unique_id=43308394]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="LicenseInfo" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer/MarginContainer" unique_id=2105696166]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer/MarginContainer/LicenseInfo" unique_id=186374757]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("7_c8jof")
+text = "Your License is:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="LicenseStatus" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer/MarginContainer/LicenseInfo" unique_id=1047921063]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.41568628, 1, 0.4862745, 1)
+theme_override_font_sizes/normal_font_size = 16
+theme_override_styles/normal = ExtResource("8_fbxwr")
+text = "<license-status>"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Padding3" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=574012442]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
 [node name="MinutesInfoContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=662737384]
@@ -101,41 +139,31 @@ theme_override_styles/panel = ExtResource("2_j622v")
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer" unique_id=1490675624]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_bottom = 8
 
 [node name="MinutesInfo" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer" unique_id=468993618]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo" unique_id=944645968]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo/HBoxContainer" unique_id=1599326312]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo" unique_id=1599326312]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Available build minutes:"
+theme_override_styles/normal = ExtResource("7_c8jof")
+text = "Minutes left:"
 scroll_active = false
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo/HBoxContainer" unique_id=1109765231]
+[node name="BuildMinutes" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo" unique_id=1109765231]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
-text = "500"
+theme_override_styles/normal = ExtResource("8_fbxwr")
+text = "<minutes-left>"
 scroll_active = false
-horizontal_alignment = 2
 vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo" unique_id=621889259]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_4dlhn")
-value = 100.0
-rounded = true
-show_percentage = false
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo" unique_id=1456569628]
 layout_mode = 2
@@ -146,7 +174,7 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 text = "Get more minutes"
 
-[node name="Padding3" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=574012442]
+[node name="Padding2" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=222103418]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
@@ -157,18 +185,20 @@ theme_override_styles/panel = ExtResource("2_j622v")
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer" unique_id=1712117888]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_bottom = 8
 
 [node name="ProjectInfo" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer" unique_id=359427632]
 layout_mode = 2
 theme_override_constants/separation = 0
+alignment = 1
 
 [node name="ProjectInfoText" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1817983478]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("7_c8jof")
 text = "Project Info"
 scroll_active = false
 horizontal_alignment = 1
@@ -182,6 +212,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("7_c8jof")
 text = "Bundle ID:"
 scroll_active = false
 vertical_alignment = 1
@@ -189,15 +220,11 @@ vertical_alignment = 1
 [node name="ReactiveBundleID" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1811706117]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_51du6")
-text = "???.?????.???"
+text = "com.shipgodot.demo1"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_m52ik")
 setting_path = "shipgodot/ios/bundle_id"
-
-[node name="Padding5" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=779166779]
-custom_minimum_size = Vector2(0, 4)
-layout_mode = 2
 
 [node name="Padding6" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=1474713558]
 custom_minimum_size = Vector2(0, 8)
@@ -207,69 +234,27 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("7_c8jof")
 text = "Project Version:"
 scroll_active = false
 vertical_alignment = 1
 
-[node name="Padding7" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=56822736]
-custom_minimum_size = Vector2(0, 4)
-layout_mode = 2
-
 [node name="ReactiveProjectVersion" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=777206112]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_51du6")
-text = "?.?.?"
+text = "2.0.2"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_m52ik")
 setting_path = "application/config/version"
 
-[node name="Padding2" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=222103418]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-
-[node name="LicenseInfoContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=1251552896]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_j622v")
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer" unique_id=43308394]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
-
-[node name="LicenseInfo" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer/MarginContainer" unique_id=2105696166]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer/MarginContainer/LicenseInfo" unique_id=31527043]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer/MarginContainer/LicenseInfo/HBoxContainer" unique_id=186374757]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Your License is:"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/LicenseInfoContainer/MarginContainer/LicenseInfo/HBoxContainer" unique_id=1047921063]
-custom_minimum_size = Vector2(96, 32)
-layout_mode = 2
-theme_override_colors/default_color = Color(0.41568628, 1, 0.4862745, 1)
-text = "Active"
-scroll_active = false
-horizontal_alignment = 2
-vertical_alignment = 1
-
 [node name="Padding4" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=1953900729]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="SettingsButtonContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info" unique_id=1780679740]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("2_j622v")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/SettingsButtonContainer" unique_id=419023281]
@@ -280,6 +265,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 32
 
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Info/SettingsButtonContainer/MarginContainer" unique_id=468241560]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 text = "Settings"
 
