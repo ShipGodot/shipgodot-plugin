@@ -3,6 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://b0g8412m2eypp" path="res://addons/shipgodot_ios/views/main/components/build_info_container/panel_build_info.tres" id="1_g2bxi"]
 [ext_resource type="Script" uid="uid://bmsnggnlqdayl" path="res://addons/shipgodot_ios/views/main/components/build_info_container/build_info_container.gd" id="2_pmt6a"]
 [ext_resource type="PackedScene" uid="uid://mbckskx4lbfv" path="res://addons/shipgodot_ios/views/main/components/cogs/cogs.tscn" id="3_1dfrv"]
+[ext_resource type="Script" uid="uid://bl0ay6bvnxn6" path="res://addons/shipgodot_ios/views/main/scripts/project_setting_label.gd" id="4_a3k2n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tiyo"]
 bg_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
@@ -58,23 +59,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="ProjectName" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo" unique_id=204323190]
-unique_name_in_owner = true
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo" unique_id=474754724]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_styles/normal = ExtResource("1_g2bxi")
 theme_override_styles/focus = ExtResource("1_g2bxi")
-text = "Multitouch Cubes Demo "
-scroll_active = false
+text = "Multitouch Cubes Demo 2"
 vertical_alignment = 2
+script = ExtResource("4_a3k2n")
+setting_path = "application/config/name"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo" unique_id=540456824]
 layout_mode = 2
 
 [node name="BuildId" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer3" unique_id=1982925361]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 16)
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
@@ -85,32 +85,31 @@ bbcode_enabled = true
 scroll_active = false
 vertical_alignment = 2
 
-[node name="LogLink" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer3" unique_id=1337024108]
+[node name="LogLinkButton" type="LinkButton" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer3" unique_id=1130050263]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(124, 16)
+visible = false
 layout_mode = 2
-theme_override_colors/default_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
-theme_override_font_sizes/mono_font_size = 12
-theme_override_styles/normal = ExtResource("1_g2bxi")
-theme_override_styles/focus = ExtResource("1_g2bxi")
-bbcode_enabled = true
-scroll_active = false
-horizontal_alignment = 2
-vertical_alignment = 2
+theme_override_colors/font_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
+text = "see build log"
+uri = "https://shipgodot.com"
+
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer3" unique_id=81001557]
+unique_name_in_owner = true
+layout_mode = 2
+text = "cancel build"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo" unique_id=1026702160]
 layout_mode = 2
 
-[node name="Version" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer" unique_id=1253192586]
+[node name="Version" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer" unique_id=1650607434]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/default_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
+theme_override_colors/font_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
 theme_override_styles/normal = ExtResource("1_g2bxi")
 theme_override_styles/focus = ExtResource("1_g2bxi")
-text = "0.0.28"
-scroll_active = false
+text = "2.0.2"
 vertical_alignment = 2
 
 [node name="Date" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/BuildInfo/HBoxContainer" unique_id=1847137876]
