@@ -84,7 +84,7 @@ layout_mode = 2
 [node name="VersionText" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/Info/PluginInfoContainer/MarginContainer/PluginInfo" unique_id=948415966]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "v.0.2.0 alpha"
+text = "v.0.1 alpha"
 horizontal_alignment = 2
 vertical_alignment = 2
 script = ExtResource("6_gxt26")
@@ -166,11 +166,13 @@ scroll_active = false
 vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo" unique_id=1456569628]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo/MarginContainer" unique_id=1793800159]
+[node name="MoreMinutes" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Info/MinutesInfoContainer/MarginContainer/MinutesInfo/MarginContainer" unique_id=1793800159]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Get more minutes"
 
@@ -242,7 +244,7 @@ vertical_alignment = 1
 [node name="ReactiveProjectVersion" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=777206112]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_51du6")
-text = "2.0.2"
+text = "3.0.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_m52ik")
@@ -264,7 +266,8 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 32
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Info/SettingsButtonContainer/MarginContainer" unique_id=468241560]
+[node name="Settings" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Info/SettingsButtonContainer/MarginContainer" unique_id=468241560]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 text = "Settings"
