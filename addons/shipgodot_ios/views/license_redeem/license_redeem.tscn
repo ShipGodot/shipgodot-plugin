@@ -146,6 +146,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Grab a license here."
+uri = "https://app.shipgodot.com/checkout/buy/dc482791-e724-40a4-a499-f1c06d8184f6"
 
 [node name="Padding2" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1393537973]
 custom_minimum_size = Vector2(0, 32)
