@@ -244,7 +244,7 @@ vertical_alignment = 1
 [node name="ReactiveProjectVersion" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Info/ProjectInfoContainer/MarginContainer/ProjectInfo" unique_id=777206112]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_51du6")
-text = "3.0.0"
+text = "3.0.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_m52ik")
@@ -266,11 +266,26 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 32
 
-[node name="Settings" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Info/SettingsButtonContainer/MarginContainer" unique_id=468241560]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 48)
+[node name="MinutesInfo" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Info/SettingsButtonContainer/MarginContainer" unique_id=1244025047]
 layout_mode = 2
-text = "Settings"
+theme_override_constants/separation = 0
+
+[node name="LogLinkButton" type="LinkButton" parent="PanelContainer/MarginContainer/HBoxContainer/Info/SettingsButtonContainer/MarginContainer/MinutesInfo" unique_id=1468908113]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
+text = "Manage subscription"
+uri = "https://app.shipgodot.com/billing"
+
+[node name="Padding4" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Info/SettingsButtonContainer/MarginContainer/MinutesInfo" unique_id=20255504]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LogLinkButton2" type="LinkButton" parent="PanelContainer/MarginContainer/HBoxContainer/Info/SettingsButtonContainer/MarginContainer/MinutesInfo" unique_id=321591798]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
+text = "Manage license"
+uri = "https://app.lemonsqueezy.com/my-orders"
 
 [node name="Padding" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=2034810296]
 custom_minimum_size = Vector2(8, 0)
