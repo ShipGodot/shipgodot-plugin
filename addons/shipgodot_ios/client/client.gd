@@ -5,7 +5,7 @@ extends Node
 
 signal request_failed(error: ApiError)
 
-const BASE_URL := "https://shipgodot-automate-ios-testing.shipgodot.workers.dev"
+const BASE_URL := "https://api.shipgodot.com"
 
 var seat_token: String = ""
 var license_key: String = ""
@@ -120,16 +120,6 @@ func deactivate_self() -> bool:
 		return false
 	seat_token = ""
 	return true
-
-
-## POST /v1/topup — buy extra build minutes (license-key auth; charged via
-## Lemon Squeezy immediately, minutes land asynchronously — re-poll get_session()).
-## Returns the number of pending minutes, or -1 on failure.
-func request_topup(units: int = 1) -> int:
-	var d := await _request_json(HTTPClient.METHOD_POST, "/v1/topup", {"units": units}, _Auth.LICENSE_KEY)
-	if d == null:
-		return -1
-	return int(d.get("minutes", 0))
 
 
 ## GET /v1/activations — list devices on this license (license-key auth,
