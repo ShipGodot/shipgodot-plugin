@@ -1,6 +1,6 @@
 # ShipGodot
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/69d02f83-7dd9-4d2e-b74b-e49bcca34826" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0684ccb1-c74d-499f-8cdc-7352cbf3e01c" />
 
 ---
 
