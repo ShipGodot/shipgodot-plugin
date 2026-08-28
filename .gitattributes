@@ -5,3 +5,6 @@
 /**        export-ignore
 /addons    !export-ignore
 /addons/** !export-ignore
+
+# use git-lfs for images
+*.png filter=lfs diff=lfs merge=lfs -text
