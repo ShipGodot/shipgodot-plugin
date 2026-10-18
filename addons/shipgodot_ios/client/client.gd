@@ -9,8 +9,10 @@ const BASE_URL := "https://api.shipgodot.com"
 
 var seat_token: String = ""
 var license_key: String = ""
-var timeout_seconds: float = 30.0
 var last_error: ApiError = null
+
+const BASE_TIMEOUT := 30.0
+const MIN_UPLOAD_BYTES_PER_SEC := 250_000.0
 
 const ApiError = preload("res://addons/shipgodot_ios/client/models/api_error.gd").ApiError
 const AppleApiKey = preload("res://addons/shipgodot_ios/client/models/apple_api_key.gd").AppleApiKey
@@ -69,7 +71,7 @@ func upload_project_zip(upload_url: String, zip_path: String) -> bool:
 	if bytes.is_empty() and FileAccess.get_open_error() != OK:
 		_fail(ApiError.transport("Cannot read zip: %s" % zip_path))
 		return false
-	var http := _make_http()
+	var http := _make_http(bytes.size())
 	var err := http.request_raw(upload_url, PackedStringArray(["Content-Type: application/zip"]),
 			HTTPClient.METHOD_PUT, bytes)
 	if err != OK:
@@ -148,9 +150,10 @@ func deactivate_by_id(activation_id: int) -> bool:
 
 enum _Auth { NONE, SEAT_TOKEN, LICENSE_KEY }
 
-func _make_http() -> HTTPRequest:
+func _make_http(bytes : int = 0) -> HTTPRequest:
 	var http := HTTPRequest.new()
-	http.timeout = timeout_seconds
+	http.timeout = BASE_TIMEOUT + float(bytes) / MIN_UPLOAD_BYTES_PER_SEC
+	http.use_threads = true
 	add_child(http)
 	return http
 
