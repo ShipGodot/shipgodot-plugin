@@ -10,8 +10,8 @@ var main_scene = preload("res://addons/shipgodot_ios/views/main/main.tscn")
 
 func _ready() -> void:
 	%ContinueButton.pressed.connect(_on_continue)
-	if not get_bundle_id().is_empty():
-		%BundleID.text = get_bundle_id()
+	if not ShipGodotUtils.get_bundle_id().is_empty():
+		%BundleID.text = ShipGodotUtils.get_bundle_id()
 		_on_continue()
 
 
@@ -20,7 +20,7 @@ func _on_continue() -> void:
 	if bundle_id.length() == 0:
 		request_modal.emit(bundle_id_error)
 		return
-	set_bundle_id(bundle_id)
+	ShipGodotUtils.set_bundle_id(bundle_id)
 
 	var changes = check_ios_settings()
 	if changes:

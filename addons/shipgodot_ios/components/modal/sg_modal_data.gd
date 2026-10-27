@@ -1,6 +1,7 @@
 @tool
 class_name SGModalData
 extends Resource
+# TODO: Change name to ShipGodotModalData - for consistency
 
 enum Type { INFO, WARNING, ERROR }
 

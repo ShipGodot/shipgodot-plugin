@@ -19,10 +19,19 @@ class BuildStatus:
 		"timed_out": Status.TIMED_OUT,
 	}
 
+	func _init() -> void:
+		build_id = ""
+		status_raw = "queued"
+		created_at = Time.get_unix_time_from_system()
+		started_at = 0
+		finished_at = 0
+		billable_minutes = 0
+
 
 	func get_duration_string() -> String:
 		var seconds := 0
-		if is_finished():
+
+		if is_finished() and started_at != 0:
 			seconds = finished_at - started_at
 		elif started_at != 0:
 			seconds = Time.get_unix_time_from_system() - started_at

@@ -63,31 +63,64 @@ func request_build_slot() -> BuildSlot:
 	return null if d == null else BuildSlot.from_dict(d)
 
 
-## PUT <presigned URL> — upload the project zip straight to R2.
-## Not part of the Worker API; no auth header (the signature is in the URL).
-func upload_project_zip(upload_url: String, zip_path: String) -> bool:
+## POST /v1/builds/{id}/upload
+## returns upload_id for the multipart upload
+func init_multipart_upload(build_id: String) -> String:
+	var d := await _request_json(HTTPClient.METHOD_POST,
+			"/v1/builds/%s/upload" % build_id.uri_encode(), {}, _Auth.SEAT_TOKEN)
+	return "" if d == null else str(d.get("upload_id", ""))
+
+
+## GET /v1/builds/{id}/upload/part
+## returns PUT url for the part to upload
+func presign_upload_part(build_id: String, upload_id: String, part_number: int) -> String:
+	var path := "/v1/builds/%s/upload/part?upload_id=%s&part_number=%d" % [
+		build_id.uri_encode(), upload_id.uri_encode(), part_number]
+
+	var d := await _request_json(HTTPClient.METHOD_GET, path, {}, _Auth.SEAT_TOKEN)
+	return "" if d == null else str(d.get("url", ""))
+
+
+## POST /v1/builds/{id}/upload/complete
+## Signals that the upload is completed, requires array of {part_number, etag}
+func complete_multipart_upload(build_id: String, upload_id: String, parts: Array) -> int:
+	var body := {"upload_id": upload_id, "parts": parts}
+	var d := await _request_json(HTTPClient.METHOD_POST,
+			"/v1/builds/%s/upload/complete" % build_id.uri_encode(), body, _Auth.SEAT_TOKEN)
+	return 0 if d == null else int(d.get("size", ""))
+
+
+## DELETE /v1/builds/{id}/upload"
+## aborts multipart upload
+func abort_upload(build_id: String) -> bool:
+	var d := await _request_json(HTTPClient.METHOD_DELETE,
+			"/v1/builds/%s/upload" % build_id.uri_encode(), {}, _Auth.SEAT_TOKEN)
+	return d != null
+
+
+## PUT <presigned URL>
+## upload the project part straight to R2, returns etag needed to complete the multipart build
+func upload_project_part(upload_url: String, bytes: PackedByteArray) -> String:
 	last_error = null
-	var bytes := FileAccess.get_file_as_bytes(zip_path)
-	if bytes.is_empty() and FileAccess.get_open_error() != OK:
-		_fail(ApiError.transport("Cannot read zip: %s" % zip_path))
-		return false
 	var http := _make_http(bytes.size())
-	var err := http.request_raw(upload_url, PackedStringArray(["Content-Type: application/zip"]),
+	var err := http.request_raw(upload_url, PackedStringArray(),
 			HTTPClient.METHOD_PUT, bytes)
 	if err != OK:
 		http.queue_free()
 		_fail(ApiError.transport("HTTPRequest.request_raw failed: %d" % err))
-		return false
+		return ""
 	var resp: Array = await http.request_completed
 	http.queue_free()
 	var code := int(resp[1])
 	if resp[0] != HTTPRequest.RESULT_SUCCESS:
 		_fail(ApiError.transport("Upload transport error: %d" % resp[0]))
-		return false
+		return ""
 	if code < 200 or code >= 300:
 		_fail(ApiError.from_response(code, {"error": "upload_failed"}))
-		return false
-	return true
+		return ""
+
+	var etag := _header(resp[2], "etag")
+	return etag
 
 
 ## POST /v1/builds/{id}/dispatch — start the build after the upload succeeded.
@@ -168,6 +201,13 @@ func _headers_for(auth: _Auth) -> PackedStringArray:
 			pass
 	return h
 
+func _header(headers: PackedStringArray, name: String) -> String:
+	var prefix := name.to_lower() + ":"
+	for h in headers:
+		if h.to_lower().begins_with(prefix):
+			return h.substr(prefix.length()).strip_edges()
+	return ""
+
 func _fail(err: ApiError) -> Variant:
 	last_error = err
 	request_failed.emit(err)
@@ -182,8 +222,8 @@ func _request_json(method: HTTPClient.Method, path: String, body: Dictionary, au
 	if auth == _Auth.LICENSE_KEY and license_key.is_empty():
 		return _fail(ApiError.transport("No license key set."))
 
-	var http := _make_http()
 	var body_str := "" if body.is_empty() and method == HTTPClient.METHOD_GET else JSON.stringify(body)
+	var http := _make_http(body_str.to_utf8_buffer().size())
 	var err := http.request(BASE_URL + path, _headers_for(auth), method, body_str)
 	if err != OK:
 		http.queue_free()

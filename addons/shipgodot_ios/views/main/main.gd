@@ -28,89 +28,31 @@ func update_session() -> void:
 
 func _create_new_build() -> void:
 	processing.emit(true)
+	if _current_build_container and not _current_build_container.status.is_finished():
+		processing.emit(false)
+		var error_modal = SGModalData.error_modal("You can request a new build once the current one is done.", "Build in progress")
+		request_modal.emit(error_modal)
+		return
 
-	var slot : BuildSlot = await api.request_build_slot()
-	if not slot:
+	var poll_timer := Timer.new()
+	var backoff_timer := Timer.new()
+	add_child(poll_timer)
+	add_child(backoff_timer)
+	var build : ShipGodotBuild = await ShipGodotBuild.create(api, poll_timer, backoff_timer)
+	if not build:
 		processing.emit(false)
 		_display_last_api_error()
 		return
+	build.completed.connect(update_session)
 
 	%EmptyText.visible = false
 
 	if _current_build_container:
-		_current_build_container.finished.disconnect(update_session)
+		_current_build_container.build.completed.disconnect(update_session)
 
 	_current_build_container = build_component.instantiate()
-	_current_build_container.api = api
-	_current_build_container.build_id = slot.build_id
-	_current_build_container.version = str(ProjectSettings.get_setting("application/config/version", ""))
-	_current_build_container.finished.connect(update_session)
+	_current_build_container.setup(build)
 	%BuildsContainer.add_child(_current_build_container)
 	%BuildsContainer.move_child(_current_build_container, 0)
 
-	if not await zip_and_upload_project(slot.upload_url):
-		await _current_build_container.cancel_build()
-		processing.emit(false)
-		return
-
-	if not await api.dispatch_build(slot.build_id, get_bundle_id(), _get_engine_version()):
-		_display_last_api_error()
-		await _current_build_container.cancel_build()
 	processing.emit(false)
-
-
-
-# TODO: Upload in parts
-func zip_and_upload_project(presigned_url: String, excludes: Array = []) -> bool:
-	if excludes.is_empty():
-		excludes = _default_excludes
-
-	# Gather every file under res://
-	var files: Array[String] = []
-	_collect_files("res://", files, excludes)
-	if files.is_empty():
-		push_error("No files found under res://")
-		return false
-
-	# Pack them into a zip in user://
-	var packer := ZIPPacker.new()
-	var open_err := packer.open(ZIP_PATH)
-	if open_err != OK:
-		push_error("Could not create zip: %s" % error_string(open_err))
-		return false
-
-	for f in files:
-		packer.start_file(f.substr("res://".length()))   # relative path inside archive
-		packer.write_file(FileAccess.get_file_as_bytes(f))
-		packer.close_file()
-	packer.close()
-
-	if not await api.upload_project_zip(presigned_url, ZIP_PATH):
-		_display_last_api_error()
-		return false
-
-	return true
-
-
-func _collect_files(dir_path: String, out: Array, excludes: Array) -> void:
-	var dir := DirAccess.open(dir_path)
-	if dir == null:
-		return
-	dir.include_hidden = true
-	dir.list_dir_begin()
-	var name := dir.get_next()
-	while name != "":
-		var full := dir_path.path_join(name)
-		var rel := full.substr("res://".length())
-		var skip := false
-		for ex in excludes:
-			if rel == ex or rel.begins_with(ex + "/"):
-				skip = true
-				break
-		if not skip:
-			if dir.current_is_dir():
-				_collect_files(full, out, excludes)
-			else:
-				out.append(full)
-		name = dir.get_next()
-	dir.list_dir_end()
